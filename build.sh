@@ -54,7 +54,7 @@ docker build -t ${NAMESPACE}livecode-server-build:$TAG livecode-server-build/$TA
     || die "Build failed!"
 
 echo "Extracting livecode server"
-docker run -i --rm l${NAMESPACE}ivecode-server-build:$TAG /usr/bin/tar -czP /opt/livecode \
+docker run -i --rm ${NAMESPACE}livecode-server-build:$TAG /usr/bin/tar -czP /opt/livecode \
     > livecode-server/$TAG/livecode-server.tar.gz \
     || die "Extracting /opt/livecode failed!"
 
