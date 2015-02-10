@@ -41,6 +41,6 @@ RUN git clone --depth=5 -b ${BRANCH} ${REPO} . \
     && make MODE=release bootstrap \
     && make MODE=release server-all
 
-#RUM make MODE=release lc-run-check lc-test-check
+RUM make MODE=release lc-run-check lc-test-check
 
 RUN make MODE=release server-install
