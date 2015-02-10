@@ -32,11 +32,11 @@ function make_dockerfile() {
 cd $(dirname $(readlink -f "$0"))
 
 # Check that there have been changes since the previous build
-if [ -a previous-commit ] && [ "$(cat previous-commit)" = "$COMMIT" ]; then
+if [ -a BUILD_HEAD.$BRANCH ] && [ "$(cat BUILD_HEAD.$BRANCH)" = "$COMMIT" ]; then
     echo "No commited changes since previous build."
     exit 0
 fi
-echo $COMMIT > previous-commit
+echo $COMMIT > BUILD_HEAD.$BRANCH
 
 
 ########################################
@@ -78,9 +78,9 @@ docker push ${NAMESPACE}livecode-server \
 ########################################
 # Update git
 
-git add previous-commit
+git add BUILD_HEAD.$BRANCH
 git add livecode-server-build/$TAG/Dockerfile
 git add livecode-server/$TAG/Dockerfile
-git commit -m "Built $TAG"
+git commit --author "Build bot" -m "Built $TAG" 
 git push
 

@@ -22,6 +22,14 @@ RUN yum install -y \
     make \
     tar
 
+RUN yum clean all
+
+# Clean out the locales, see https://bugzilla.redhat.com/show_bug.cgi?id=156477#c30
+# saves ~100MB on the image size.
+RUN localedef --delete-from-archive $(localedef --list-archive) \
+    && mv /usr/lib/locale/locale-archive /usr/lib/locale/locale-archive.tmpl \
+    && build-locale-archive
+
 RUN mkdir /usr/src/livecode
 WORKDIR /usr/src/livecode
 
