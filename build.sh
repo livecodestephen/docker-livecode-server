@@ -81,6 +81,6 @@ docker push ${NAMESPACE}livecode-server \
 git add BUILD_HEAD.$BRANCH
 git add livecode-server-build/$TAG/Dockerfile
 git add livecode-server/$TAG/Dockerfile
-git commit --author "Build bot" -m "Built $TAG" 
+git commit --author "Build bot <stephen.tawn@livecode.com>" -m "Built $TAG" 
 git push
 
