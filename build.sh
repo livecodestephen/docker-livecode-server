@@ -4,8 +4,8 @@ export MAINTAINER="Stephen Tawn <stephen.tawn@livecode.com>"
 export NAMESPACE=livecodestephen/
 export DATE=$(date +"%F")
 
-export REPO=https://github.com/livecodestephen/livecode.git
-export BRANCH=feature-install-server
+export REPO=https://github.com/runrev/livecode.git
+export BRANCH=develop
 export COMMIT=$(git ls-remote $REPO $BRANCH | awk '{ print $1 }') || exit 1
 
 export TAG=$BRANCH-$DATE
@@ -81,6 +81,5 @@ docker push ${NAMESPACE}livecode-server \
 git add BUILD_HEAD.$BRANCH
 git add livecode-server-build/$TAG/Dockerfile
 git add livecode-server/$TAG/Dockerfile
-git commit --author "Build bot <stephen.tawn@livecode.com>" -m "Built $TAG" 
+git commit --author "Build bot <>" -m "Built $TAG" 
 git push
-
