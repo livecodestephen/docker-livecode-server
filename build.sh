@@ -6,7 +6,7 @@ export DATE=$(date +"%F")
 
 export REPO=https://github.com/runrev/livecode.git
 export BRANCH=develop
-export COMMIT=$(git ls-remote $REPO $BRANCH | awk '{ print $1 }') || exit 1
+export COMMIT=$(git ls-remote --heads $REPO $BRANCH | awk '{ print $1 }') || exit 1
 
 export TAG=$BRANCH-$DATE
 
