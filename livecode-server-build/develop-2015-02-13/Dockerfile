@@ -5,7 +5,7 @@ ENV LIVECODE_TAG develop-2015-02-13
 ENV LIVECODE_DATE 2015-02-13
 ENV LIVECODE_REPO https://github.com/runrev/livecode.git
 ENV LIVECODE_BRANCH develop
-ENV LIVECODE_COMMIT 52e320e6e5e2053a0baf119965227b83f943383c
+ENV LIVECODE_COMMIT 5abaa3939af98d9d3c8236e6e6bf29dcd8a910fc
 
 RUN yum update -y
 
@@ -34,7 +34,7 @@ RUN mkdir /usr/src/livecode
 WORKDIR /usr/src/livecode
 
 RUN git clone --depth=5 -b develop https://github.com/runrev/livecode.git . \
-    && git checkout 52e320e6e5e2053a0baf119965227b83f943383c \
+    && git checkout 5abaa3939af98d9d3c8236e6e6bf29dcd8a910fc \
     && git submodule init \
     && git submodule update thirdparty \
     && (cd prebuilt; ./fetch-libraries.sh linux) \
