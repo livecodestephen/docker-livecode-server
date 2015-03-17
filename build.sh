@@ -50,7 +50,7 @@ make_dockerfile livecode-server
 # Make the containers
 
 echo "Building ${NAMESPACE}livecode-server-build:$TAG"
-docker build -t ${NAMESPACE}livecode-server-build:$TAG livecode-server-build/$TAG \
+docker build --rm -t ${NAMESPACE}livecode-server-build:$TAG livecode-server-build/$TAG \
     || die "Build failed!"
 
 echo "Extracting livecode server"
@@ -59,7 +59,7 @@ docker run -i --rm ${NAMESPACE}livecode-server-build:$TAG /usr/bin/tar -czP /opt
     || die "Extracting /opt/livecode failed!"
 
 echo "Building ${NAMESPACE}livecode-server:$TAG"
-docker build -t ${NAMESPACE}livecode-server:$TAG livecode-server/$TAG \
+docker build -rm -t ${NAMESPACE}livecode-server:$TAG livecode-server/$TAG \
     || die "Build failed!"
 
 docker tag ${NAMESPACE}livecode-server-build:$TAG ${NAMESPACE}livecode-server-build:latest
